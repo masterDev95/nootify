@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nootify/screens/home_screen.dart';
 import 'package:nootify/theme.dart';
 
 void main() {
-  runApp(const NootifyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((value) => runApp(const NootifyApp()));
 }
 
 class NootifyApp extends StatefulWidget {
