@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nootify/components/reminder_list.dart';
+import 'package:nootify/theme.dart';
 
 class HomeScreen extends StatelessWidget {
   final VoidCallback onToggleTheme;
@@ -10,7 +12,27 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Nootify"),
+        title: Text.rich(
+          TextSpan(
+            children: [
+              WidgetSpan(
+                child: Padding(
+                  padding: EdgeInsetsGeometry.only(right: 12),
+                  child: SizedBox(
+                    height: 32,
+                    child: Image(
+                      image: AssetImage("assets/image/penguin-icon.png"),
+                    ),
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: "Nootify",
+                style: TextStyle(color: AppTheme.primaryColor),
+              ),
+            ],
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: onToggleTheme,
@@ -18,28 +40,45 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...introSection(context),
+              const SizedBox(height: 20),
+              const ReminderList(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> introSection(BuildContext context) {
+    return [
+      SizedBox(
+        height: 96,
+        child: Image(image: AssetImage("assets/image/penguin-svgrepo-com.png")),
+      ),
+      Text.rich(
+        style: Theme.of(context).textTheme.headlineMedium,
+        TextSpan(
           children: [
-            Text(
-              "Bienvenue sur Nootify",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Noot Noot ! Prêt à organiser votre journée ?",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-              label: const Text("Nouveau Rappel"),
+            TextSpan(text: "Bienvenue sur "),
+            TextSpan(
+              text: "Nootify",
+              style: TextStyle(color: AppTheme.primaryColor),
             ),
           ],
         ),
       ),
-    );
+      const SizedBox(height: 5),
+      Text(
+        "Noot Noot ! Prêt à organiser votre journée ?",
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+    ];
   }
 }

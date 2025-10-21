@@ -22,3 +22,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/image/penguin-svgrepo-com.png
+    - assets/image/penguin-icon.png
+    - assets/image/penguin-sleep.png

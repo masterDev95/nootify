@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const Color primaryColor = Color(0xFF3B82F6);
   static final Color _darkContainerBackgroundColor = Color(0xFF293243);
+  static final Color _lightContainerBackgroundColor = Color(0xFFFCFDFE);
 
   // Thème clair
   static final ThemeData lightTheme = ThemeData(
@@ -13,8 +14,8 @@ class AppTheme {
       primary: primaryColor,
       secondary: primaryColor,
     ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
+    appBarTheme: AppBarTheme(
+      backgroundColor: _lightContainerBackgroundColor,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black87),
       titleTextStyle: TextStyle(
@@ -23,7 +24,7 @@ class AppTheme {
         fontSize: 20,
       ),
     ),
-    cardColor: Colors.white,
+    cardTheme: CardThemeData(color: _lightContainerBackgroundColor),
     textTheme: const TextTheme(
       headlineMedium: TextStyle(
         color: Colors.black87,
@@ -35,10 +36,6 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       ),
     ),
   );
@@ -62,7 +59,7 @@ class AppTheme {
         fontSize: 20,
       ),
     ),
-    cardColor: _darkContainerBackgroundColor,
+    cardTheme: CardThemeData(color: _darkContainerBackgroundColor),
     textTheme: const TextTheme(
       headlineMedium: TextStyle(
         color: Colors.white,
@@ -74,10 +71,6 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       ),
     ),
   );
